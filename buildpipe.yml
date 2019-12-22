@@ -4,7 +4,6 @@ stairs:
   - name: test
     scope: project
     buildkite:
-      queue: builder
       env:
         MAKE_CLEANUP_TARGET: true
       command:
@@ -44,12 +43,20 @@ stairs:
       command:
         - make deploy-prd
 projects:
-  - name: sre
-    path: sre
+  - name: buildkite-agent
+    path: buildkite-agent
     emoji: ":buildkite:"
-  - name: k8s
-    path: k8s
+    skip_stairs:
+      - test
+      - deploy-stg
+      - deploy-prd
+  - name: hubot
+    path: hubot
     emoji: ":javascript:"
-  - name: portals
-    path: portals
+    skip_stairs:
+      - test
+  - name: primer
+    path: primer
     emoji: ":python:"
+    tags:
+      - straight-to-prod
