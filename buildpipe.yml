@@ -1,8 +1,3 @@
-deploy:
-  branch: master
-  timezone: US/Eastern
-  allowed_hours_regex: '9|1[0-7]'
-  allowed_weekdays_regex: '[1-5]'
 stairs:
   - name: test
     scope: project
